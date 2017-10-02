@@ -1,7 +1,7 @@
 import json
 import sys
 
-newFile = open("output.js", 'w')
+newFile = open("output.js", 'w', encoding="utf8")
 i18n_dictionary = {}
 
 def update_i18n_dictionary(element_indicators, element_value):
@@ -11,6 +11,7 @@ def update_i18n_dictionary(element_indicators, element_value):
 		old_node = current_node
 		try:
 			current_node = current_node[element_indicator]
+			print(element_indicator)
 		except KeyError:
 			current_node = None
 		if (current_node == None):
@@ -69,7 +70,7 @@ def convert_to_string(i18n_dictionary):
 	return result
 
 def main(argv):
-	file = open(argv[0])
+	file = open(argv[0], encoding="utf8")
 	lines = file.readlines()
 
 	for i in range(len(lines)):
